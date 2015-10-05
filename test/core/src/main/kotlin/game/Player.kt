@@ -19,10 +19,10 @@ class Player(world: World, x: Float, y: Float) : Actor() {
     var fixture: Fixture by Delegates.notNull()
 
     init {
-        setWidth(16f)
-        setHeight(16f)
-        sprite = Sprite(Texture("badlogic.jpg"))
-        sprite.setSize(16f, 16f)
+        setWidth(64f)
+        setHeight(64f)
+        sprite = Sprite(Texture("char.png"))
+        sprite.setSize(getWidth(), getHeight())
         sprite.setPosition(x, y)
         val bodyDef = BodyDef()
         bodyDef.type = BodyDef.BodyType.DynamicBody
@@ -30,7 +30,7 @@ class Player(world: World, x: Float, y: Float) : Actor() {
         bodyDef.fixedRotation = true
         body = world.createBody(bodyDef)
         val shape = PolygonShape()
-        shape.setAsBox(8f, 8f, Vector2(8f, 8f), 0f)
+        shape.setAsBox(getWidth() / 2, getHeight() / 2, Vector2(getWidth() / 2, getHeight() / 2), 0f)
         val fixtureDef = FixtureDef()
         fixtureDef.shape = shape
         fixtureDef.friction = 2000f
@@ -63,10 +63,8 @@ class Player(world: World, x: Float, y: Float) : Actor() {
 
     override fun act(delta: Float) {
         super.act(delta)
-        if (body.getLinearVelocity().x > 0f)
-
-        if (body.getLinearVelocity().x > 10) {
-            body.setLinearVelocity(10f, body.getLinearVelocity().y)
+        if (body.getLinearVelocity().x > 330) {
+            body.setLinearVelocity(330f, body.getLinearVelocity().y)
         }
 
         if (moving) {
@@ -83,7 +81,7 @@ class Player(world: World, x: Float, y: Float) : Actor() {
             }
         }
         else {
-            fixture.setFriction(2000f)
+            fixture.setFriction(3000f)
         }
         sprite.setPosition(body.getPosition().x, body.getPosition().y)
     }

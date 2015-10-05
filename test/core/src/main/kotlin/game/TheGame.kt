@@ -15,6 +15,7 @@ import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import kotlin.concurrent.fixedRateTimer
 import kotlin.properties.Delegates
@@ -34,10 +35,11 @@ public class TheGame : ApplicationAdapter() {
         batch = SpriteBatch()
         camera = OrthographicCamera(Const.WIDTH.toFloat(), Const.HEIGHT.toFloat())
         world = World(Vector2(0f, -9.8f), true)
-        ground = Ground(world)
-        player = Player(world, 40f, 46f)
+        ground = Ground(world, 50f, 140f)
+        player = Player(world, 80f, 150f)
         stage = Stage(ScreenViewport(camera))
         Gdx.input.setInputProcessor(GestureDetector(Gestures(player)))
+        stage.addActor(Background())
         stage.addActor(player)
         stage.addActor(ground)
         renderer = Box2DDebugRenderer()

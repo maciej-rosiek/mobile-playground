@@ -7,18 +7,20 @@ import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.scenes.scene2d.Actor
 
-class Ground(world: World) : Actor() {
+class Ground(world: World, x: Float, y: Float) : Actor() {
 
     val renderer = ShapeRenderer();
 
     init {
+        setX(x)
+        setY(y)
         setWidth(Const.WIDTH.toFloat())
         setHeight(20f)
         val bodyDef = BodyDef();
         bodyDef.position.set(Vector2(0f, 10f));
         val body = world.createBody(bodyDef)
         val shape = ChainShape()
-        shape.createChain(arrayOf(Vector2(0f, 0f), Vector2(getWidth(), 0f)))
+        shape.createChain(arrayOf(Vector2(x, y), Vector2(x + getWidth(), y)))
         val fixtureDef = FixtureDef()
         fixtureDef.shape = shape
         fixtureDef.friction = 0.9f
