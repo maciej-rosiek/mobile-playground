@@ -215,3 +215,4 @@ ModelManifest.xml
 *.apk
 test_data/
 Library/
+Temp/
