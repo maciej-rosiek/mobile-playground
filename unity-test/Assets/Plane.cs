@@ -4,7 +4,6 @@ using System.Collections;
 
 public class Plane : MonoBehaviour {
 
-    static float _deadzone = 0.1f;
     Animator animator;
     int speed = 6;
     public GameObject plane;

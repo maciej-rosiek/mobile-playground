@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ScrollSky : MonoBehaviour {
 
     public float scrollSpeed = 0.5F;
     public Renderer rend;
+
     void Start() {
         rend = GetComponent<Renderer>();
     }
